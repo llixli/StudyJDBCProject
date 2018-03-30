@@ -6,18 +6,19 @@ import java.sql.SQLException;
 
 public class MySQLConnUtils {
 	public static Connection getMySQLConnection() throws SQLException, ClassNotFoundException {
-		String hostName = "localhost";
-		String dbName = "";
+		String hostName = "127.0.0.1";
+		String dbName = "bearinmind";
 		String userName = "root";
-		String password = "1234";
+		String password = "army";
 		
 		return getMySQLConnection(hostName, dbName, userName, password);
 	}
 
 	private static Connection getMySQLConnection(String hostName, String dbName, String userName, String password) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		
-		String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
+		String settingsParameters = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName + settingsParameters;
 		
 		Connection connection = DriverManager.getConnection(connectionURL, userName, password);
 		

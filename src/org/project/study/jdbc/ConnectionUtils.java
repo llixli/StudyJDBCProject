@@ -9,9 +9,13 @@ public class ConnectionUtils {
 		return MySQLConnUtils.getMySQLConnection();
 	}
 	
-	public static void main(String... args) throws SQLException {
+	public static void main(String... args) throws SQLException, ClassNotFoundException {
 		System.out.println("Get connection...");
-		Connection connection = ConnectionUtils.getConnection();
+		Connection connection = ConnectionUtils.getConnection();	
+		
+		System.out.println("Get connection " + connection);
+		System.out.println("Done!");
+
 	}
 
 }
